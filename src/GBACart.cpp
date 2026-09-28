@@ -934,6 +934,9 @@ std::unique_ptr<CartCommon> LoadAddon(int type, void* userdata)
     case GBAAddon_GuitarGrip:
         cart = std::make_unique<CartGuitarGrip>(userdata);
         break;
+    case GBAAddon_Analogue:
+        cart = std::make_unique<CartAnalogue>(userdata);
+        break;
     default:
         Log(LogLevel::Warn, "GBACart: !! invalid addon type %d\n", type);
         return nullptr;

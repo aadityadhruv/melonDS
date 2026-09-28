@@ -249,6 +249,24 @@ private:
     void* UserData;
 };
 
+// "Fake" GBA cart to passthrough analogue inputs to SM64
+class CartAnalogue : public CartCommon
+{
+public:
+    CartAnalogue(void* userdata);
+    ~CartAnalogue() override;
+
+    void Reset() override;
+
+    void DoSavestate(Savestate* file) override;
+
+    u16 ROMRead(u32 addr) const override;
+    u8 SRAMRead(u32 addr) override;
+
+private:
+    void* UserData;
+    u16 AnalogueInput = 0;
+};
 // CartMotionPakHomebrew -- DS Motion Pak (Homebrew)
 class CartMotionPakHomebrew : public CartCommon
 {
