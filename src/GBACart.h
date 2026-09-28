@@ -267,7 +267,6 @@ public:
 
 private:
     void* UserData;
-    u16 AnalogueInput = 0;
 };
 // CartMotionPakHomebrew -- DS Motion Pak (Homebrew)
 class CartMotionPakHomebrew : public CartCommon

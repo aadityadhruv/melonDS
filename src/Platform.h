@@ -451,7 +451,7 @@ float Addon_MotionQuery(MotionQueryType type, void* userdata);
 // analogue inputs
 // @param type The value being queried.
 // @return The X and Y coordinates of the stick
-std::tuple<float, float> Addon_AnalogueQuery(void* userdata);
+std::tuple<int, int> Addon_AnalogueQuery(void* userdata);
 
 struct DynamicLibrary;
 

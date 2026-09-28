@@ -154,7 +154,7 @@ public:
     bool inputHotkeyDown(int id) { return hotkeyDown(id); }
     // Query the controller's stick and return the (x,y) tuple
     // describing the position of the stick
-    std::tuple<float, float> inputAnalogueQuery();
+    std::tuple<int, int> inputAnalogueQuery();
     float inputMotionQuery(melonDS::Platform::MotionQueryType type);
 
     void setJoystick(int id);
@@ -363,6 +363,7 @@ private:
     int joystickID;
     SDL_Joystick* joystick;
     SDL_GameController* controller;
+    bool hasAnalogue = false;
     bool hasAccelerometer = false;
     bool hasGyroscope = false;
     bool hasRumble = false;
