@@ -446,6 +446,13 @@ enum MotionQueryType
 // @param type The value being queried.
 float Addon_MotionQuery(MotionQueryType type, void* userdata);
 
+
+// Called by the CartAnalogue emulation to query the game controller's
+// analogue inputs
+// @param type The value being queried.
+// @return The X and Y coordinates of the stick
+std::tuple<float, float> Addon_AnalogueQuery(void* userdata);
+
 struct DynamicLibrary;
 
 /**

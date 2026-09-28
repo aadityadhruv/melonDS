@@ -33,6 +33,7 @@ add_library(core STATIC
     FIFO.h
     GBACart.cpp
     GBACartMotionPak.cpp
+    GBACartAnalogue.cpp
     GPU.cpp
     GPU_Soft.cpp
     GPU2D.cpp

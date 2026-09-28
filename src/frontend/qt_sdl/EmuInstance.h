@@ -152,6 +152,9 @@ public:
     void inputRumbleStop();
 
     bool inputHotkeyDown(int id) { return hotkeyDown(id); }
+    // Query the controller's stick and return the (x,y) tuple
+    // describing the position of the stick
+    std::tuple<float, float> inputAnalogueQuery();
     float inputMotionQuery(melonDS::Platform::MotionQueryType type);
 
     void setJoystick(int id);

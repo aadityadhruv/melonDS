@@ -161,6 +161,18 @@ void EmuInstance::inputRumbleStop()
     SDL_UnlockMutex(joyMutex.get());
 }
 
+std::tuple<float, float> EmuInstance::inputAnalogueQuery() {
+    SDL_LockMutex(joyMutex.get());
+    Sint16 x_axis = 0;
+    Sint16 y_axis = 0;
+    if (controller) {
+        x_axis = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
+        y_axis = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
+    }
+    SDL_UnlockMutex(joyMutex.get());
+    return std::tuple(x_axis, y_axis);
+}
+
 float EmuInstance::inputMotionQuery(melonDS::Platform::MotionQueryType type)
 {
     float values[3];

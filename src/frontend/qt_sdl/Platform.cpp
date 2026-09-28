@@ -579,6 +579,11 @@ void Addon_RumbleStop(void* userdata)
     ((EmuInstance*)userdata)->inputRumbleStop();
 }
 
+std::tuple<float, float> Addon_AnalogueQuery(void* userdata) {
+
+    return ((EmuInstance*)userdata)->inputAnalogueQuery();
+}
+
 float Addon_MotionQuery(MotionQueryType type, void* userdata)
 {
     return ((EmuInstance*)userdata)->inputMotionQuery(type);

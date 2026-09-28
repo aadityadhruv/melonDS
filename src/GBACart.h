@@ -36,6 +36,8 @@ enum CartType
     MotionPakHomebrew = 0x203,
     MotionPakRetail = 0x204,
     GuitarGrip = 0x205,
+    //TODO What should this ID be?
+    Analogue = 0x206,
 };
 
 // See https://problemkaputt.de/gbatek.htm#gbacartridgeheader for details
