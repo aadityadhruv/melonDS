@@ -30,6 +30,11 @@
 /* Open-Bus Value (mask) */
 #define OPEN_BUS 0xAFFF
 
+float apply_deadzone(float value, float mag, float deadzone) {
+    if (mag <= deadzone) return 0.0f;
+    float cmag = std::min(mag, 1.0f); // clamp mag to 1.0f just in case
+    return value * (cmag - deadzone) / (1.0f - deadzone) / mag;
+}
 namespace melonDS
 {
     using Platform::Log;
@@ -62,10 +67,13 @@ namespace melonDS
             if ((addr & 0xFF000000) != 0x09000000) return OPEN_BUS;
             // CHECKME: SRAM address mask
             auto stick_pos = Platform::Addon_AnalogueQuery(UserData);
-            int x = std::get<0>(stick_pos);
-            int y = std::get<1>(stick_pos);
+            float x = std::get<0>(stick_pos) / 32767.0f;
+            float y = std::get<1>(stick_pos) / 32767.0f;
             float mag = std::hypot(x, y);
             float ang = std::atan2(x, y);
+            float deadzone = 0.4;
+            x = apply_deadzone(x, mag, deadzone);
+            y = apply_deadzone(y, mag, deadzone);
             if (mag > 1.0f) {
                 x /= mag;
                 y /= mag;
